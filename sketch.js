@@ -17,7 +17,8 @@ function preload(){
   gameOverImage = loadImage("gameover.png")
 
   //load sound here
-
+gameOverSound=loadSound('gameover.mp3')
+  knifeSwooshSound=loadSound('knifeSwoosh.mp3')
 }
 
 
@@ -57,14 +58,14 @@ function draw() {
     if(fruitGroup.isTouching(knife)){
       fruitGroup.destroyEach();
       knifeSwooshSound.play();  
-      score=score+2
+      score=score+2;
     }
     else
     {
       // Go to end state if sword touching enemy
       if(monsterGroup.isTouching(knife)){
         gameState=END;
-        gameoverSound.play();
+        gameOverSound.play();
         
         
         //add gameover sound here
@@ -114,7 +115,7 @@ function fruits(){
     {
     fruit.x=600;
     //update below give line of code for increase fruitGroup speed by 4
-    fruit.velocityX=(8+(score/4))
+    fruit.velocityX=-(8+(score/4))
     }
     else
     {
@@ -122,7 +123,7 @@ function fruits(){
       fruit.x=0;
       
      //update below give line of code for increase fruitGroup speed by 4
-      fruit.velocityX= 7;
+      fruit.velocityX=(8+(score/4))
       }
     }
     
